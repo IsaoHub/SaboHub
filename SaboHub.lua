@@ -42,8 +42,7 @@ MakeWindow({
   }
 ]]
 
- local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
-
+ 
  local Slider = PlayerTab:CreateSlider({
     Name = "WalkSpeed",
     Range = {10, 1000},
