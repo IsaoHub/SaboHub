@@ -1,36 +1,52 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Library = loadstring(game:HttpGet(("https://raw.githubusercontent.com/REDzHUB/LibraryV2/main/redzLib")))()
 
-local Window = Rayfield:CreateWindow({
-    Name = "SaboHub",
-    LoadingTitle = "SaboHub",
-    LoadingSubtitle = "by IsaoMachii",
-    ConfigurationSaving = {
-       Enabled = true,
-       FolderName = nil, -- Create a custom folder for your hub/game
-       FileName = "Big Hub"
-    },
-    Discord = {
-       Enabled = false,
-       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-    },
-    KeySystem = false, -- Set this to true to use our key system
-    KeySettings = {
-       Title = "Untitled",
-       Subtitle = "Key System",
-       Note = "No method of obtaining the key is provided",
-       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-       Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+-- janela
+
+MakeWindow({
+  Hub = {
+    Title = "REDz HUB",
+    Animation = "by : redz9999"
+  },
+  Key = {
+    KeySystem = false,
+    Title = "Key System",
+    Description = "",
+    KeyLink = "",
+    Keys = {"1234"},
+    Notifi = {
+      Notifications = true,
+      CorrectKey = "Running the Script...",
+      Incorrectkey = "The key is incorrect",
+      CopyKeyLink = "Copied to Clipboard"
     }
- })
+  }
+})
+
+--[[
+  Hub = {
+    Title = "REDz HUB" -- <string> Titulo do seu script
+    Animation = "by : redz9999" -- <string> Adiciona um texto na animacão do seu HUB
+  },
+  Key = {
+    KeySystem = <bollean> Adiciona um sistema de chaves
+    Title = "Key System" <string> Adiciona um titulo ao seu sistema de chaves
+    Description = "" <string> Adiciona uma descrição ao seu sistema de chaves
+    KeyLink = "" <string> Adicina o Link onde pega a chave do HUB
+    Keys = {"1234"} <table> Adiciona as Chaves
+    Notifi = {
+      Notifications = true <boolean> Adicina notificações ao sistema de chaves
+      CorrectKey = "Running the Script..." <string> notificação quando a chave estiver correta
+      Incorrectkey = "The key is incorrect" <string> notificação quando a chave estiver incorreta
+      CopyKeyLink = "Copied to Clipboard" <string> notificação quando o link da chave fir copiado
+    }
+  }
+]]
 
  local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 
  local Slider = PlayerTab:CreateSlider({
     Name = "WalkSpeed",
-    Range = {1, 10},
+    Range = {10, 1000},
     Increment = 1,
     Suffix = "Speed",
     CurrentValue = 10,
