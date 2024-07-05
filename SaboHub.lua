@@ -1,9 +1,9 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Tutorial Script Hub",
-    LoadingTitle = "Tutorial Script Hub",
-    LoadingSubtitle = "by Rolo",
+    Name = "SaboHub",
+    LoadingTitle = "SaboHub",
+    LoadingSubtitle = "by IsaoMachii",
     ConfigurationSaving = {
        Enabled = true,
        FolderName = nil, -- Create a custom folder for your hub/game
@@ -63,3 +63,67 @@ local Window = Rayfield:CreateWindow({
      game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
     end,
  })
+
+MinimizeButton({
+  Image = "",
+  Size = {40, 40},
+  Color = Color3.fromRGB(10, 10, 10),
+  Corner = true,
+  Stroke = false,
+  StrokeColor = Color3.fromRGB(255, 0, 0)
+})
+
+--[[
+  Image = "" <string> imagem do botão
+  Size = {40, 40} <table> tamanho do botão
+  Color = Color3.fromRGB(10, 10, 10) <Color3>  Cor do fundo do botäo
+  Corner = true -- <boolean> Adicina um UICorner
+  Stroke = false <boolean> Adiciona um UIStroke
+  StrokeColor = Color3.fromRGB(255, 0, 0) <Color3> Cor do UIStroke
+]]
+
+local Slider = AddSlider(Main, {
+  Name = "Slider teste",
+  MinValue = 10,
+  MaxValue = 100,
+  Default = 25,
+  Increase = 1,
+  Callback = function(Value)
+    
+  end
+})
+
+--[[
+  Name = "Slider teste" <string> nome do controle deslizante
+  MinValue = 10 <number> valor minimo
+  MaxValue = 100 <number> valor maximo
+  Default = 25 <number> valor padrão
+  Increase = 1 <number> valor que almenta de acordo com a posição do 
+  Callback = function(Value)
+    função do controle deslizante
+  end
+]]
+
+UpdateSlider(Slider, 25)
+
+--[[
+  <number> novo valor do controle deslizante
+]]
+
+local MobileToggle = AddMobileToggle({
+  Name = "Toggle",
+  Visible = true,
+  Callback = function(Value)
+    
+  end
+})
+
+MobileToggle.Visible = (false/true)
+
+--[[
+  Name = "Toggle" <string> Nome da caixa de seleção
+  Visible = false <boolean> coloca ela invisivel ou visivel
+  Callback = function()
+    -- função da caixa de seleção
+  end
+]]
