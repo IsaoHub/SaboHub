@@ -1,144 +1,187 @@
-local Library = loadstring(game:HttpGet(("https://raw.githubusercontent.com/REDzHUB/LibraryV2/main/redzLib")))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
--- janela
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-MakeWindow({
-  Hub = {
-    Title = "REDz HUB",
-    Animation = "by : redz9999"
-  },
-  Key = {
-    KeySystem = false,
-    Title = "Key System",
-    Description = "",
-    KeyLink = "",
-    Keys = {"1234"},
-    Notifi = {
-      Notifications = true,
-      CorrectKey = "Running the Script...",
-      Incorrectkey = "The key is incorrect",
-      CopyKeyLink = "Copied to Clipboard"
-    }
-  }
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+local Tab = Window:MakeTab({
+	Name = "Tab 1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
 --[[
-  Hub = {
-    Title = "REDz HUB" -- <string> Titulo do seu script
-    Animation = "by : redz9999" -- <string> Adiciona um texto na animacão do seu HUB
-  },
-  Key = {
-    KeySystem = <bollean> Adiciona um sistema de chaves
-    Title = "Key System" <string> Adiciona um titulo ao seu sistema de chaves
-    Description = "" <string> Adiciona uma descrição ao seu sistema de chaves
-    KeyLink = "" <string> Adicina o Link onde pega a chave do HUB
-    Keys = {"1234"} <table> Adiciona as Chaves
-    Notifi = {
-      Notifications = true <boolean> Adicina notificações ao sistema de chaves
-      CorrectKey = "Running the Script..." <string> notificação quando a chave estiver correta
-      Incorrectkey = "The key is incorrect" <string> notificação quando a chave estiver incorreta
-      CopyKeyLink = "Copied to Clipboard" <string> notificação quando o link da chave fir copiado
-    }
-  }
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 ]]
 
- 
- local Slider = PlayerTab:CreateSlider({
-    Name = "WalkSpeed",
-    Range = {10, 1000},
-    Increment = 1,
-    Suffix = "Speed",
-    CurrentValue = 10,
-    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", Value)
-    end,
- })
-
- local Slider = PlayerTab:CreateSlider({
-    Name = "Dash length",
-    Range = {10, 1000},
-    Increment = 1,
-    Suffix = "Length",
-    CurrentValue = 10,
-    Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     game.Players.LocalPlayer.Character:SetAttribute("DashLength", Value)
-    end,
- })
-
- local Slider = PlayerTab:CreateSlider({
-    Name = "Jump Height",
-    Range = {10, 500},
-    Increment = 1,
-    Suffix = "Height",
-    CurrentValue = 10,
-    Flag = "Slider3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-    end,
- })
-
-MinimizeButton({
-  Image = "",
-  Size = {40, 40},
-  Color = Color3.fromRGB(10, 10, 10),
-  Corner = true,
-  Stroke = false,
-  StrokeColor = Color3.fromRGB(255, 0, 0)
+local Section = Tab:AddSection({
+	Name = "Section"
 })
 
 --[[
-  Image = "" <string> imagem do botão
-  Size = {40, 40} <table> tamanho do botão
-  Color = Color3.fromRGB(10, 10, 10) <Color3>  Cor do fundo do botäo
-  Corner = true -- <boolean> Adicina um UICorner
-  Stroke = false <boolean> Adiciona um UIStroke
-  StrokeColor = Color3.fromRGB(255, 0, 0) <Color3> Cor do UIStroke
+Name = <string> - The name of the section.
 ]]
 
-local Slider = AddSlider(Main, {
-  Name = "Slider teste",
-  MinValue = 10,
-  MaxValue = 100,
-  Default = 25,
-  Increase = 1,
-  Callback = function(Value)
-    
-  end
+OrionLib:MakeNotification({
+	Name = "Title!",
+	Content = "Notification content... what will it say??",
+	Image = "rbxassetid://4483345998",
+	Time = 5
 })
 
 --[[
-  Name = "Slider teste" <string> nome do controle deslizante
-  MinValue = 10 <number> valor minimo
-  MaxValue = 100 <number> valor maximo
-  Default = 25 <number> valor padrão
-  Increase = 1 <number> valor que almenta de acordo com a posição do 
-  Callback = function(Value)
-    função do controle deslizante
-  end
+Title = <string> - The title of the notification.
+Content = <string> - The content of the notification.
+Image = <string> - The icon of the notification.
+Time = <number> - The duration of the notfication.
 ]]
 
-UpdateSlider(Slider, 25)
-
---[[
-  <number> novo valor do controle deslizante
-]]
-
-local MobileToggle = AddMobileToggle({
-  Name = "Toggle",
-  Visible = true,
-  Callback = function(Value)
-    
-  end
+Tab:AddButton({
+	Name = "Button!",
+	Callback = function()
+      		print("button pressed")
+  	end    
 })
 
-MobileToggle.Visible = (false/true)
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
 
 --[[
-  Name = "Toggle" <string> Nome da caixa de seleção
-  Visible = false <boolean> coloca ela invisivel ou visivel
-  Callback = function()
-    -- função da caixa de seleção
-  end
+Name = <string> - The name of the toggle.
+Default = <bool> - The default value of the toggle.
+Callback = <function> - The function of the toggle.
 ]]
+
+CoolToggle:Set(true)
+
+Tab:AddColorpicker({
+	Name = "Colorpicker",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		print(Value)
+	end	  
+})
+
+--[[
+Name = <string> - The name of the colorpicker.
+Default = <color3> - The default value of the colorpicker.
+Callback = <function> - The function of the colorpicker.
+]]
+
+ColorPicker:Set(Color3.fromRGB(255,255,255))
+
+Tab:AddSlider({
+	Name = "Slider",
+	Min = 0,
+	Max = 20,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "bananas",
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+
+--[[
+Name = <string> - The name of the slider.
+Min = <number> - The minimal value of the slider.
+Max = <number> - The maxium value of the slider.
+Increment = <number> - How much the slider will change value when dragging.
+Default = <number> - The default value of the slider.
+ValueName = <string> - The text after the value number.
+Callback = <function> - The function of the slider.
+]]
+
+Slider:Set(2)
+
+Tab:AddLabel("Label")
+
+Tab:AddParagraph("Paragraph","Paragraph Content")
+
+CoolParagraph:Set("Paragraph New!", "New Paragraph Content!")
+
+Tab:AddTextbox({
+	Name = "Textbox",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+		print(Value)
+	end	  
+})
+
+--[[
+Name = <string> - The name of the textbox.
+Default = <string> - The default value of the textbox.
+TextDisappear = <bool> - Makes the text disappear in the textbox after losing focus.
+Callback = <function> - The function of the textbox.
+]]
+
+Tab:AddBind({
+	Name = "Bind",
+	Default = Enum.KeyCode.E,
+	Hold = false,
+	Callback = function()
+		print("press")
+	end    
+})
+
+--[[
+Name = <string> - The name of the bind.
+Default = <keycode> - The default value of the bind.
+Hold = <bool> - Makes the bind work like: Holding the key > The bind returns true, Not holding the key > Bind returns false.
+Callback = <function> - The function of the bind.
+]]
+
+Bind:Set(Enum.KeyCode.E)
+
+Tab:AddDropdown({
+	Name = "Dropdown",
+	Default = "1",
+	Options = {"1", "2"},
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+
+--[[
+Name = <string> - The name of the dropdown.
+Default = <string> - The default value of the dropdown.
+Options = <table> - The options in the dropdown.
+Callback = <function> - The function of the dropdown.
+]]
+
+Dropdown:Refresh(List<table>,true)
+
+Dropdown:Set("dropdown option")
+
+--destroy script 
+
+
+OrionLib:Destroy()
+
+-- fim
+
+OrionLib:Init()
